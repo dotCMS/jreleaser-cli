@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.dotcms</groupId>
     <artifactId>jreleaser-cli</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <description>app -- Sample Quarkus CLI application</description>
     <inceptionYear>2023</inceptionYear>
     <url>https://github.com/dotCMS/jreleaser-cli</url>
@@ -139,6 +139,10 @@
                     <name>native</name>
                 </property>
             </activation>
+            <properties>
+                <skipITs>false</skipITs>
+                <quarkus.package.type>native</quarkus.package.type>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -190,6 +194,15 @@
                                 <descriptor>src/main/assembly/assembly.xml</descriptor>
                             </descriptors>
                         </configuration>
+                        <executions>
+                            <execution>
+                                <id>make-distribution</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -243,7 +256,11 @@
                                 </release>
                                 <distributions>
                                     <q-cli>
-                                        <type>NATIVE_IMAGE</type>
+<!--                                        <type>NATIVE_IMAGE</type>-->
+                                        <type>BINARY</type>
+                                        <brew>
+                                            <active>ALWAYS</active>
+                                        </brew>
                                         <artifacts>
                                             <artifact>
                                                 <path>{{artifactsDir}}/{{distributionName}}-{{projectVersion}}-linux-x86_64.tar.gz</path>
