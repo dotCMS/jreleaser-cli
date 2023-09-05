@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.dotcms</groupId>
     <artifactId>jreleaser-cli</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <description>app -- Sample Quarkus CLI application</description>
     <inceptionYear>2023</inceptionYear>
     <url>https://github.com/dotCMS/jreleaser-cli</url>
@@ -33,9 +33,7 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.3.0</quarkus.platform.version>
         <surefire-plugin.version>3.0.0</surefire-plugin.version>
-<!--        <exec.mainClass>com.dotcms.GreetingCommand</exec.mainClass>-->
-        <jreleaser-plugin.version>1.7.0</jreleaser-plugin.version>
-        <shade-plugin.version>3.5.0</shade-plugin.version>
+        <jreleaser-plugin.version>1.8.0</jreleaser-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -152,42 +150,6 @@
                                 <version>2.11.0</version>
                             </dependency>
                         </dependencies>
-                        <configuration>
-                            <jreleaser>
-                                <release>
-                                    <github>
-                                        <tagName>{{projectVersion}}</tagName>
-                                        <releaseName>{{projectVersion}}</releaseName>
-                                        <overwrite>true</overwrite>
-                                        <changelog>
-                                            <formatted>ALWAYS</formatted>
-                                            <format>- {{commitShortHash}} {{commitTitle}}</format>
-                                            <preset>conventional-commits</preset>
-                                            <contributors>
-                                                <format>- {{contributorName}}</format>
-                                            </contributors>
-                                            <hide>
-                                                <categories>merge</categories>
-                                                <contributors>GitHub,dependabot</contributors>
-                                            </hide>
-                                        </changelog>
-                                    </github>
-                                </release>
-                                <distributions>
-                                    <jreleaser-cli>
-                                        <type>SINGLE_JAR</type>
-                                        <brew>
-                                            <active>ALWAYS</active>
-                                        </brew>
-                                        <artifacts>
-                                            <artifact>
-                                                <path>target/distributions/{{distributionName}}-{{projectVersion}}-runner.jar</path>
-                                            </artifact>
-                                        </artifacts>
-                                    </jreleaser-cli>
-                                </distributions>
-                            </jreleaser>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
