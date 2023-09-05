@@ -1,0 +1,133 @@
+# Generated with JReleaser 1.7.0 at 2023-09-04T21:06:12.292472+02:00
+#project:
+#  name: app
+#  version: 1.0.0-SNAPSHOT
+#  description: Awesome App
+#  longDescription: Awesome App
+#  authors:
+#    - Duke
+#  license: Apache-2.0
+#  links:
+#    homepage: https://acme.com/app
+#  java:
+#    groupId: com.acme
+#    version: 8
+#  inceptionYear: 2023
+#
+#release:
+#  github:
+#    owner: duke
+#
+#distributions:
+#  app:
+#    artifacts:
+#      - path: path/to/{{distributionName}}-{{projectVersion}}.zip
+
+project:
+  name: jreleaser-cli
+  version: 1.1.0
+  versionPattern: SEMVER
+  snapshot:
+    pattern: .*-SNAPSHOT
+    label: early-access
+    fullChangelog: false
+  description: app -- Sample Quarkus CLI application
+  longDescription: app -- Sample Quarkus CLI application
+  license: Apache-2.0
+  inceptionYear: 2023
+  copyright: 2023 Daniel Colina
+  authors:
+    Daniel Colina
+  stereotype: NONE
+  links:
+    homepage: https://github.com/dotCMS/jreleaser-cli
+    documentation: https://github.com/dotCMS/jreleaser-cli
+    license: http://www.apache.org/licenses/LICENSE-2.0.txt
+    bugTracker: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+    vcsBrowser: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+
+  java:
+    enabled: true
+    version: 11
+    groupId: com.dotcms
+    artifactId: jreleaser-cli
+    multiProject: false
+
+release:
+  github:
+    enabled: true
+    host: github.com
+    owner: dotCMS
+    name: jreleaser-cli
+    username: dotCMS
+    uploadAssets: ALWAYS
+    artifacts: true
+    files: true
+    checksums: true
+    catalogs: true
+    signatures: true
+    repoUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}
+    repoCloneUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}.git
+    commitUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/commits
+    srcUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/blob/{{repoBranch}}
+    downloadUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/download/{{tagName}}/{{artifactFile}}
+    releaseNotesUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/tag/{{tagName}}
+    latestReleaseUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/releases/latest
+    issueTrackerUrl: https://{{repoHost}}/{{repoOwner}}/{{repoName}}/issues
+    tagName: {{projectVersion}}
+    releaseName: {{projectVersion}}
+    branch: main
+    branchPush: main
+    commitAuthor:
+      name: jreleaserbot
+      email: jreleaser@kordamp.org
+    sign: false
+    skipTag: false
+    skipRelease: false
+    overwrite: true
+    update:
+      enabled: false
+    apiEndpoint: https://api.github.com
+    connectTimeout: 20
+    readTimeout: 60
+    changelog:
+      formatted: ALWAYS
+      preset: conventional-commits
+      contributors:
+        format: '- {{commitShortHash}} {{commitTitle}}'
+
+distributions:
+  jreleaser-cli:
+    active: ALWAYS
+    type: SINGLE_JAR
+    executable:
+      name: jreleaser-cli
+      windowsExtension: bat
+    artifacts:
+      - path: target/distributions/jreleaser-cli-1.1.0-runner.jar
+        active: ALWAYS
+    stereotype: NONE
+    java:
+      enabled: true
+      version: 11
+      groupId: com.dotcms
+      artifactId: jreleaser-cli
+      multiProject: false
+    brew:
+      active: ALWAYS
+      continueOnError: false
+      templateDirectory: src/jreleaser/distributions/jreleaser-cli/brew
+      commitAuthor:
+        name: jreleaserbot
+        email: jreleaser@kordamp.org
+      formulaName: jreleaser-cli
+      multiPlatform: false
+      tap:
+        active: RELEASE
+        owner: dotCMS
+        name: homebrew-tap
+        tagName: {{projectVersion}}
+        branch: HEAD
+        branchPush: HEAD
+        username: dotCMS
+        commitMessage: {{distributionName}} {{tagName}}
