@@ -166,7 +166,7 @@
                                     </github>
                                 </release>
                                 <distribution>
-                                    <app>
+                                    <jreleaser-cli>
                                         <type>SINGLE_JAR</type>
                                         <active>ALWAYS</active>
                                         <stereotype>CLI</stereotype>
@@ -175,7 +175,7 @@
                                                 <path>target/distributions/{{distributionName}}-{{projectVersion}}-runner.jar</path>
                                             </artifact>
                                         </artifacts>
-                                    </app>
+                                    </jreleaser-cli>
                                 </distribution>
                             </jreleaser>
                         </configuration>
