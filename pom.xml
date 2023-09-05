@@ -144,6 +144,41 @@
                         <artifactId>jreleaser-maven-plugin</artifactId>
                         <version>${jreleaser-plugin.version}</version>
                         <inherited>false</inherited>
+                        <configuration>
+                            <jreleaser>
+                                <release>
+                                    <github>
+                                        <tagName>{{projectVersion}}</tagName>
+                                        <releaseName>{{projectVersion}}</releaseName>
+                                        <overwrite>true</overwrite>
+                                        <changelog>
+                                            <formatted>ALWAYS</formatted>
+                                            <format>- {{commitShortHash}} {{commitTitle}}</format>
+                                            <preset>conventional-commits</preset>
+                                            <contributors>
+                                                <format>- {{contributorName}}</format>
+                                            </contributors>
+                                            <hide>
+                                                <categories>merge</categories>
+                                                <contributors>GitHub,dependabot</contributors>
+                                            </hide>
+                                        </changelog>
+                                    </github>
+                                </release>
+                                <distribution>
+                                    <app>
+                                        <type>SINGLE_JAR</type>
+                                        <active>ALWAYS</active>
+                                        <stereotype>CLI</stereotype>
+                                        <artifacts>
+                                            <artifact>
+                                                <path>target/distributions/{{distributionName}}-{{projectVersion}}-runner.jar</path>
+                                            </artifact>
+                                        </artifacts>
+                                    </app>
+                                </distribution>
+                            </jreleaser>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
