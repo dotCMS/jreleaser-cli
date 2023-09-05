@@ -165,7 +165,7 @@
                                         </changelog>
                                     </github>
                                 </release>
-                                <distribution>
+                                <distributions>
                                     <jreleaser-cli>
                                         <type>SINGLE_JAR</type>
                                         <active>ALWAYS</active>
@@ -176,7 +176,7 @@
                                             </artifact>
                                         </artifacts>
                                     </jreleaser-cli>
-                                </distribution>
+                                </distributions>
                             </jreleaser>
                         </configuration>
                     </plugin>
