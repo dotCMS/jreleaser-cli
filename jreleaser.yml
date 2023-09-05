@@ -1,7 +1,6 @@
 # Generated with JReleaser 1.8.0 at 2023-09-05T09:49:01.355976+02:00
 project:
   name: jreleaser-cli
-#  version: 1.2.0
   description: app -- Sample Quarkus CLI application
   longDescription: app -- Sample Quarkus CLI application
   authors:
@@ -12,19 +11,11 @@ project:
     homepage: https://github.com/dotCMS/jreleaser-cli
     documentation: https://github.com/dotCMS/jreleaser-cli
     license: http://www.apache.org/licenses/LICENSE-2.0.txt
-  java:
-    groupId: com.dotcms
-    version: 11
-    artifactId: jreleaser-cli
-    multiProject: false
 
 release:
   github:
-    host: github.com
-    owner: dotCMS
+    owner: dcolina
     name: jreleaser-cli
-    username: dotCMS
-    uploadAssets: ALWAYS
     changelog:
       formatted: ALWAYS
       preset: conventional-commits
@@ -35,6 +26,7 @@ distributions:
   jreleaser-cli:
     type: SINGLE_JAR
     active: ALWAYS
+    stereotype: CLI
     artifacts:
       - path: target/distributions/{{distributionName}}-{{projectVersion}}-runner.jar
-        active: ALWAYS
+
