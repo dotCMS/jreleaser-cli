@@ -3,9 +3,13 @@ project:
   name: jreleaser-cli
   description: app -- Sample Quarkus CLI application
   longDescription: app -- Sample Quarkus CLI application
+  versionPattern: 'CUSTOM:0Y.0M.MICRO'
+
 
 release:
   github:
+    tagName: '{{projectVersion}}'
+    releaseName: 'CLI - {{projectVersion}}'
     overwrite: true
     changelog:
       formatted: ALWAYS
@@ -35,8 +39,8 @@ distributions:
     active: ALWAYS
     stereotype: CLI
     artifacts:
-      - path: target/distributions/{{distributionName}}-{{projectVersion}}-runner.jar
-        transform: target/distributions/{{distributionName}}-{{projectVersion}}.jar
+      - path: target/{{distributionName}}-{{projectVersion}}-runner.jar
+        transform: target/{{distributionName}}-{{projectVersion}}.jar
 
 packagers:
   brew:
