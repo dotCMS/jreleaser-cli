@@ -24,14 +24,14 @@ release:
           - GitHub
           - dependabot
 
-#deploy:
-#  maven:
-#    artifactory:
-#      jreleaser-cli:
-#        active: ALWAYS
-#        url: https://repo.dotcms.com/artifactory/libs-release-local/com/dotcms/jreleaser/jreleaser-cli
-#        stagingRepositories:
-#          - target/distributions/{{distributionName}}-{{projectVersion}}.jar
+deploy:
+  maven:
+    artifactory:
+      jreleaser-cli:
+        active: ALWAYS
+        url: http://localhost:8082/ui/admin/repositories/local/jreleaser-cli-libs-release-local/com/dotcms/jreleaser-cli
+        stagingRepositories:
+          - target/{{distributionName}}-{{projectVersion}}-runner.jar
 
 distributions:
   jreleaser-cli:
