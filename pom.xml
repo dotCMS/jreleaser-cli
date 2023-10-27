@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.dotcms</groupId>
     <artifactId>jreleaser-cli</artifactId>
-    <version>23.09.3</version>
+    <version>1.0.0-SNAPSHOT</version>
     <description>app -- Sample Quarkus CLI application</description>
     <inceptionYear>2023</inceptionYear>
     <url>https://github.com/dotCMS/jreleaser-cli</url>
