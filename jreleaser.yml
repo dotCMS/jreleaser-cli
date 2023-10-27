@@ -10,6 +10,7 @@ project:
   snapshot:
     pattern: .*-SNAPSHOT
     label: '{{projectVersion}}-SNAPSHOT'
+    fullChangelog: true
 
 release:
   github:
